@@ -1,0 +1,154 @@
+grammar org.xtext.example.mydsl.Vaselina with org.eclipse.xtext.common.Terminals
+
+generate vaselina "http://www.xtext.org/example/mydsl/Vaselina"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+
+VaselinaProgram:
+	global+=varDeclared*
+	func+=(FuncDefinition)*
+	main=mainDeclared;
+
+mainDeclared:
+	{mainDeclared}
+	'Vaselinator' '->'
+		body+=BodyStatement*
+	'<-';
+
+BodyStatement:
+	varAssignment| varReturn | varDeclared |
+	IfExpression | DoWhileExpression | BrkStr
+	| AbstractMethodCall | ReturnDeclaration
+;
+
+varReturn:
+	'keep' rtn=varExpression;
+
+varTypeLiteral:
+	'numb' | 'strange' | 'bull' | 'dribble';
+
+varDeclared:
+	{varDeclared}
+	scope='box' (name=ID | name=ID (dim+=arrayDimension)+) ':' type=varTypeLiteral;
+
+varAssignment:
+	variable=Variable 'holds' expr=varExpression;
+	
+Variable:
+	{arrayRefs} varRefs=[varSymbol] (dim+=arrayDimension)+
+	| {varRefs} varRefs=[varSymbol]
+;
+	
+varSymbol:
+	varDeclared | FuncParameter
+;
+
+arrayDimension:
+	{arrayDimension}
+	'[' (index=[varSymbol] | size=NUM) ']';
+
+FuncCall:
+	{FuncCall}
+	func=[FuncDefinition] 'using' ':' (args+=varExpression (',' args+=varExpression)*)? ':';
+	
+FuncParameter:
+	FuncTypedDeclaration;
+
+FuncDefinition:
+	'braze' name=ID 'with' ((args+=FuncParameter (',' args+=FuncParameter)*) | 'air') '->'
+		body+=BodyStatement*
+	'and' 'vaselina';
+	
+fragment FuncTypedDeclaration *:
+	type=varTypeLiteral name=ID
+;
+
+AbstractMethodCall:
+	FuncCall | StdFunction;
+	
+StdfunctionList:
+	'printstr' | 'strjoin' | 'strsplit' | 'numtostr' | 'getargs'
+;
+
+StdFunction:
+	{StdFunction}
+	name=StdfunctionList 'using' ':' (args+=varExpression (',' args+=varExpression)*)? ':';
+
+IfExpression:
+	{IfExpression}
+	'is' 'this' 'true?' ':' ifconditon=varExpression ':' 'yes' '->'
+		then+=(BodyStatement)*
+	(=> '<-''no''->'
+		else+=(BodyStatement)*)?
+	(=> '<-');
+
+DoWhileExpression:
+	{DoWhileExpression}
+	'as' 'long' 'as' ':' loopConditon=varExpression ':' 'repeat' '->'
+		body+=(BodyStatement)*
+	(=> '<-');
+	
+
+BrkStr:
+	{BrkStr}
+	brk='break';
+	
+ReturnDeclaration:
+	'type' 'keeping' rtnType=varTypeLiteral
+;
+
+terminal NUM returns ecore::EInt:
+	(('1'..'9')('0'..'9')*) | '0';
+	
+DOUBLE:
+	integer=NUM '.' decimal=(INT|NUM)
+;
+	
+varExpression:
+	Or 
+;
+	
+Or returns varExpression:
+	And({Or.left=current} op='||' right=And)*
+;
+
+And returns varExpression:
+	Equality({And.left=current} op='&&' right=Equality)*
+;
+
+Equality returns varExpression:
+	Comparison({Equality.left=current} op=('=='|'!=') right=Comparison)*
+;
+
+Comparison returns varExpression:
+	PlusOrMinus({Comparison.left=current} op=('>='|'<='|'>'|'<') right=PlusOrMinus)*
+;
+
+PlusOrMinus returns varExpression:
+	MulOrDiv({PlusOrMinus.left=current} op=('+'|'-') right=MulOrDiv)*
+;
+
+MulOrDiv returns varExpression:
+	Module({MulOrDiv.left=current} op=('*'|'/') right=Module)*
+;
+
+Module returns varExpression:
+	Primary({Module.left=current} op='%' right=Primary)*
+;
+
+Primary returns varExpression:
+	'('{Inside} inside=varExpression')' | {Not} '!' expression=Primary | AbstractMethodCall | Terminal
+;
+
+Terminal returns varExpression:
+	{StringRef} value=STRING | {numRef} value=NUM | {doubleRef} value=DOUBLE
+	| {boolRef} varRef=('true...' | 'false...') |
+	{varRef} varRef=[varSymbol] | {arrayRef} varRef=[varSymbol] (dim+=arrayDimension)+
+;
+
+//TerminalOrMethod:
+//	Terminal | AbstractMethodCall;
+
+//oper:
+//	'-' | '+' | '/' | '*' | '>=' | '<=' | '==' | '!=' | '<' | '>' | '=' | 'and' | 'or';
