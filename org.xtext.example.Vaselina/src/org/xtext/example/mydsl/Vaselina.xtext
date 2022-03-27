@@ -147,8 +147,3 @@ Terminal returns varExpression:
 	{varRef} varRef=[varSymbol] | {arrayRef} varRef=[varSymbol] (dim+=arrayDimension)+
 ;
 
-//TerminalOrMethod:
-//	Terminal | AbstractMethodCall;
-
-//oper:
-//	'-' | '+' | '/' | '*' | '>=' | '<=' | '==' | '!=' | '<' | '>' | '=' | 'and' | 'or';
