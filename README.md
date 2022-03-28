@@ -10,8 +10,8 @@ to Java through Xtext and Xtend.
 Vaselina has 4 data types:
 - Numb (Entumecido) = Number
 - Strange (Extraño) = String
-- Bull () = Bool
-- Dribble () = Double
+- Bull (Toro) = Bool
+- Dribble (Regatear) = Double
 
 ### Functions 
 Functions can be given values to keep or not!
