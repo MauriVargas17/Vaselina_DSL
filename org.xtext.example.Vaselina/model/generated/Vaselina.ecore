@@ -30,16 +30,22 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//varExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Variable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="varRefs" eType="#//varSymbol"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="arrayRefs" eSuperTypes="#//Variable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrRefs" eType="#//varSymbol"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dims" upperBound="-1" eType="#//arrayDimension"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="varRefs" eSuperTypes="#//Variable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vaRefs" eType="#//varSymbol"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="varSymbol">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="arrayDimension">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="index" eType="#//varSymbol"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="index" eType="#//varExpression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FuncCall" eSuperTypes="#//AbstractMethodCall">
     <eStructuralFeatures xsi:type="ecore:EReference" name="func" eType="#//FuncDefinition"/>
@@ -84,11 +90,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="decimal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="varExpression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="arrayRefs" eSuperTypes="#//Variable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dim" upperBound="-1" eType="#//arrayDimension"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="varRefs" eSuperTypes="#//Variable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//varExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//varExpression"
         containment="true"/>

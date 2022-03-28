@@ -110,6 +110,20 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass arrayRefsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass varRefsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass varSymbolEClass = null;
 
   /**
@@ -195,20 +209,6 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
    * @generated
    */
   private EClass varExpressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass arrayRefsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass varRefsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -560,9 +560,53 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
    * @generated
    */
   @Override
-  public EReference getVariable_VarRefs()
+  public EClass getarrayRefs()
   {
-    return (EReference)variableEClass.getEStructuralFeatures().get(0);
+    return arrayRefsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getarrayRefs_ArrRefs()
+  {
+    return (EReference)arrayRefsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getarrayRefs_Dims()
+  {
+    return (EReference)arrayRefsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getvarRefs()
+  {
+    return varRefsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getvarRefs_VaRefs()
+  {
+    return (EReference)varRefsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -618,17 +662,6 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
   public EReference getarrayDimension_Index()
   {
     return (EReference)arrayDimensionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getarrayDimension_Size()
-  {
-    return (EAttribute)arrayDimensionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -915,39 +948,6 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
   public EClass getvarExpression()
   {
     return varExpressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getarrayRefs()
-  {
-    return arrayRefsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getarrayRefs_Dim()
-  {
-    return (EReference)arrayRefsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getvarRefs()
-  {
-    return varRefsEClass;
   }
 
   /**
@@ -1498,7 +1498,13 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
     createEReference(varAssignmentEClass, VAR_ASSIGNMENT__EXPR);
 
     variableEClass = createEClass(VARIABLE);
-    createEReference(variableEClass, VARIABLE__VAR_REFS);
+
+    arrayRefsEClass = createEClass(ARRAY_REFS);
+    createEReference(arrayRefsEClass, ARRAY_REFS__ARR_REFS);
+    createEReference(arrayRefsEClass, ARRAY_REFS__DIMS);
+
+    varRefsEClass = createEClass(VAR_REFS);
+    createEReference(varRefsEClass, VAR_REFS__VA_REFS);
 
     varSymbolEClass = createEClass(VAR_SYMBOL);
     createEAttribute(varSymbolEClass, VAR_SYMBOL__NAME);
@@ -1506,7 +1512,6 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
 
     arrayDimensionEClass = createEClass(ARRAY_DIMENSION);
     createEReference(arrayDimensionEClass, ARRAY_DIMENSION__INDEX);
-    createEAttribute(arrayDimensionEClass, ARRAY_DIMENSION__SIZE);
 
     funcCallEClass = createEClass(FUNC_CALL);
     createEReference(funcCallEClass, FUNC_CALL__FUNC);
@@ -1544,11 +1549,6 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
     createEAttribute(doubleEClass, DOUBLE__DECIMAL);
 
     varExpressionEClass = createEClass(VAR_EXPRESSION);
-
-    arrayRefsEClass = createEClass(ARRAY_REFS);
-    createEReference(arrayRefsEClass, ARRAY_REFS__DIM);
-
-    varRefsEClass = createEClass(VAR_REFS);
 
     orEClass = createEClass(OR);
     createEReference(orEClass, OR__LEFT);
@@ -1644,6 +1644,8 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
     varDeclaredEClass.getESuperTypes().add(this.getBodyStatement());
     varDeclaredEClass.getESuperTypes().add(this.getvarSymbol());
     varAssignmentEClass.getESuperTypes().add(this.getBodyStatement());
+    arrayRefsEClass.getESuperTypes().add(this.getVariable());
+    varRefsEClass.getESuperTypes().add(this.getVariable());
     funcCallEClass.getESuperTypes().add(this.getAbstractMethodCall());
     funcParameterEClass.getESuperTypes().add(this.getvarSymbol());
     abstractMethodCallEClass.getESuperTypes().add(this.getBodyStatement());
@@ -1653,8 +1655,6 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
     doWhileExpressionEClass.getESuperTypes().add(this.getBodyStatement());
     brkStrEClass.getESuperTypes().add(this.getBodyStatement());
     returnDeclarationEClass.getESuperTypes().add(this.getBodyStatement());
-    arrayRefsEClass.getESuperTypes().add(this.getVariable());
-    varRefsEClass.getESuperTypes().add(this.getVariable());
     orEClass.getESuperTypes().add(this.getvarExpression());
     andEClass.getESuperTypes().add(this.getvarExpression());
     equalityEClass.getESuperTypes().add(this.getvarExpression());
@@ -1694,15 +1694,20 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
     initEReference(getvarAssignment_Expr(), this.getvarExpression(), null, "expr", null, 0, 1, varAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVariable_VarRefs(), this.getvarSymbol(), null, "varRefs", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(arrayRefsEClass, arrayRefs.class, "arrayRefs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getarrayRefs_ArrRefs(), this.getvarSymbol(), null, "arrRefs", null, 0, 1, arrayRefs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getarrayRefs_Dims(), this.getarrayDimension(), null, "dims", null, 0, -1, arrayRefs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(varRefsEClass, varRefs.class, "varRefs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getvarRefs_VaRefs(), this.getvarSymbol(), null, "vaRefs", null, 0, 1, varRefs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(varSymbolEClass, varSymbol.class, "varSymbol", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getvarSymbol_Name(), ecorePackage.getEString(), "name", null, 0, 1, varSymbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getvarSymbol_Type(), ecorePackage.getEString(), "type", null, 0, 1, varSymbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(arrayDimensionEClass, arrayDimension.class, "arrayDimension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getarrayDimension_Index(), this.getvarSymbol(), null, "index", null, 0, 1, arrayDimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getarrayDimension_Size(), ecorePackage.getEInt(), "size", null, 0, 1, arrayDimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getarrayDimension_Index(), this.getvarExpression(), null, "index", null, 0, 1, arrayDimension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funcCallEClass, FuncCall.class, "FuncCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFuncCall_Func(), this.getFuncDefinition(), null, "func", null, 0, 1, FuncCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1740,11 +1745,6 @@ public class VaselinaPackageImpl extends EPackageImpl implements VaselinaPackage
     initEAttribute(getDOUBLE_Decimal(), ecorePackage.getEInt(), "decimal", null, 0, 1, org.xtext.example.mydsl.vaselina.DOUBLE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(varExpressionEClass, varExpression.class, "varExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(arrayRefsEClass, arrayRefs.class, "arrayRefs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getarrayRefs_Dim(), this.getarrayDimension(), null, "dim", null, 0, -1, arrayRefs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(varRefsEClass, varRefs.class, "varRefs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOr_Left(), this.getvarExpression(), null, "left", null, 0, 1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

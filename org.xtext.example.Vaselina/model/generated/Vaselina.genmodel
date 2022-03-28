@@ -26,16 +26,20 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Vaselina.ecore#//varAssignment/variable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Vaselina.ecore#//varAssignment/expr"/>
     </genClasses>
-    <genClasses ecoreClass="Vaselina.ecore#//Variable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Vaselina.ecore#//Variable/varRefs"/>
+    <genClasses ecoreClass="Vaselina.ecore#//Variable"/>
+    <genClasses ecoreClass="Vaselina.ecore#//arrayRefs">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Vaselina.ecore#//arrayRefs/arrRefs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Vaselina.ecore#//arrayRefs/dims"/>
+    </genClasses>
+    <genClasses ecoreClass="Vaselina.ecore#//varRefs">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Vaselina.ecore#//varRefs/vaRefs"/>
     </genClasses>
     <genClasses ecoreClass="Vaselina.ecore#//varSymbol">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Vaselina.ecore#//varSymbol/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Vaselina.ecore#//varSymbol/type"/>
     </genClasses>
     <genClasses ecoreClass="Vaselina.ecore#//arrayDimension">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Vaselina.ecore#//arrayDimension/index"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Vaselina.ecore#//arrayDimension/size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Vaselina.ecore#//arrayDimension/index"/>
     </genClasses>
     <genClasses ecoreClass="Vaselina.ecore#//FuncCall">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Vaselina.ecore#//FuncCall/func"/>
@@ -72,10 +76,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Vaselina.ecore#//DOUBLE/decimal"/>
     </genClasses>
     <genClasses ecoreClass="Vaselina.ecore#//varExpression"/>
-    <genClasses ecoreClass="Vaselina.ecore#//arrayRefs">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Vaselina.ecore#//arrayRefs/dim"/>
-    </genClasses>
-    <genClasses ecoreClass="Vaselina.ecore#//varRefs"/>
     <genClasses ecoreClass="Vaselina.ecore#//Or">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Vaselina.ecore#//Or/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Vaselina.ecore#//Or/op"/>

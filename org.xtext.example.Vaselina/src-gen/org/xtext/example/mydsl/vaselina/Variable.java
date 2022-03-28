@@ -10,12 +10,6 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Variable</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.xtext.example.mydsl.vaselina.Variable#getVarRefs <em>Var Refs</em>}</li>
- * </ul>
  *
  * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getVariable()
  * @model
@@ -23,26 +17,4 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Variable extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Var Refs</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Var Refs</em>' reference.
-   * @see #setVarRefs(varSymbol)
-   * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getVariable_VarRefs()
-   * @model
-   * @generated
-   */
-  varSymbol getVarRefs();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.vaselina.Variable#getVarRefs <em>Var Refs</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var Refs</em>' reference.
-   * @see #getVarRefs()
-   * @generated
-   */
-  void setVarRefs(varSymbol value);
-
 } // Variable

@@ -20,12 +20,15 @@ import org.xtext.example.mydsl.vaselina.IfExpression
 import org.xtext.example.mydsl.vaselina.StdFunction
 import org.xtext.example.mydsl.vaselina.StringRef
 import org.xtext.example.mydsl.vaselina.arrayRef
+import org.xtext.example.mydsl.vaselina.arrayRefs
+import org.xtext.example.mydsl.vaselina.arrayDimension
 import org.xtext.example.mydsl.vaselina.boolRef
 import org.xtext.example.mydsl.vaselina.numRef
 import org.xtext.example.mydsl.vaselina.varAssignment
 import org.xtext.example.mydsl.vaselina.varDeclared
 import org.xtext.example.mydsl.vaselina.varExpression
 import org.xtext.example.mydsl.vaselina.varRef 
+import org.xtext.example.mydsl.vaselina.varRefs 
 import org.xtext.example.mydsl.vaselina.varReturn
 import org.xtext.example.mydsl.vaselina.VaselinaProgram
 import org.xtext.example.mydsl.vaselina.doubleRef
@@ -90,7 +93,7 @@ class VaselinaGenerator extends AbstractGenerator {
 				
 				public static void main(String args[]){
 				
-								
+				System.out.println("Inspired on our dear friend: Mateo Velasco");				
 				«FOR body : dsl.main.body»
 					«compileBodyStatement(body)»
 				«ENDFOR»
@@ -128,11 +131,16 @@ class VaselinaGenerator extends AbstractGenerator {
 		for (p : d.body) {
 			if (!(p instanceof ReturnDeclaration) && flag) {
 				if (p instanceof varReturn) {
-						val t = typeReturn(p.rtn)
-						buf = typeName(t)
-					
-				
-			}
+					val t = typeReturn(p.rtn)
+					buf = typeName(t)
+				} else if (p instanceof IfExpression){
+					for (pp : p.then){
+						if (pp instanceof varReturn){
+							val tt = typeReturn(pp.rtn)
+							buf = typeName(tt)
+						}
+					}
+				}
 			} else if (p instanceof ReturnDeclaration){
 				buf = p.rtnType.typeName
 				flag = false
@@ -190,7 +198,14 @@ class VaselinaGenerator extends AbstractGenerator {
 			buf += typeName(p.type)
 
 			for (d : p.dim) {
-				buf += "[" + d.size.toString + "]"
+				var dix = d.index
+				if (dix instanceof numRef){
+					buf += "[" + dix.value.toString + "]"
+				}
+				if (dix instanceof varRef){
+					buf += "[" + dix.varRef.name.toString + "]"
+				}
+				
 
 				if (p.dim.length == (p.dim.lastIndexOf(d) + 1)) {
 					buf += ';'
@@ -269,7 +284,14 @@ class VaselinaGenerator extends AbstractGenerator {
 			buf += typeName(p.type)
 
 			for (d : p.dim) {
-				buf += "[" + d.size.toString + "]"
+				var dix = d.index
+				if (dix instanceof numRef){
+					buf += "[" + dix.value.toString + "]"
+				}
+				if (dix instanceof varRef){
+					buf += "[" + dix.varRef.name.toString + "]"
+				}
+				
 
 				if (p.dim.length == (p.dim.lastIndexOf(d) + 1)) {
 					buf += ';'
@@ -319,14 +341,20 @@ class VaselinaGenerator extends AbstractGenerator {
 			buf = t.varRef.name
 
 			if (t.dim.length != 0) {
+				
 				for (d : t.dim) {
-					if (d.index !== null) {
-						buf += "[" + d.index.name + "]"
-					} else {
-						buf += "[" + d.size.toString + "]"
-					}
+					var dix = d.index
+				if (dix instanceof numRef){
+					buf += "[" + dix.value.toString + "]"
+				}
+				if (dix instanceof varRef){
+					buf += "[" + dix.varRef.name.toString + "]"
+				}
+				
+
 				}
 			}
+			
 		}
 		if (t instanceof varRef) {
 			buf = t.varRef.name
@@ -369,12 +397,20 @@ class VaselinaGenerator extends AbstractGenerator {
 			StringRef: rtn = "strange"
 			doubleRef: rtn = "dribble"
 			boolRef: rtn = "bull"
+			varRef: if(true){var w = t.varRef if(w instanceof varDeclared){ 
+				if(w.scope.equals("boxes")){rtn += "array of " 
+					var i = 1
+					while (i < w.dim.length){
+						rtn += "array of "
+						i++
+					}
+					rtn += t.varRef?.type} else {rtn = t.varRef?.type}}else{rtn = t.varRef?.type}}
 			arrayRef: rtn = t.varRef?.type
-			varRef: rtn = t.varRef?.type
 			Inside: rtn = t.inside.typeReturn
 			StdFunction: if(getStdReturnType(t.name).contains("S")){rtn="strange"} 
 			else if(getStdReturnType(t.name).contains("N")){rtn="numb"}
 			else if(getStdReturnType(t.name).contains("O")){rtn="bull"}
+			else if(getStdReturnType(t.name).contains("R")){rtn="numb"}
 			FuncCall: for(f: t.func.body){if(f instanceof varReturn){rtn=f.rtn.typeReturn}}
 		}
 		return rtn
@@ -383,12 +419,14 @@ class VaselinaGenerator extends AbstractGenerator {
 	def getStdReturnType(String d) {
 		var buff = ""
 		switch d {
+			case "display": buff = ""
 			case "printstr": buff = ""
 			case "strjoin": buff = "S"
 			case "strsplit": buff = "SS"
 			case "numtostr": buff = "S"
 			case "equals": buff = "OO" // num or string or bool
 			case "getargs" : buff = "N"
+			case "length" : buff = "N"
 		}
 		return buff
 	}
@@ -511,8 +549,23 @@ class VaselinaGenerator extends AbstractGenerator {
 	
 	def compileVarAssignment(varAssignment v){
 		var buf = ""
-		buf = '''«varName(v)» = '''
+		buf = '''«varName(v)»'''
+		var vrbl = v.variable
 		
+		if(vrbl instanceof arrayRefs){
+			var aD = vrbl.dims
+			for (d: aD){
+				var dix = d.index
+				if (dix instanceof numRef){
+					buf += '[' + dix.value + ']'
+				}
+				if (dix instanceof varRef){
+					buf += '[' + dix.varRef.name.toString + ']'
+				}
+				
+			}	
+		}
+		buf += "="
 		buf += v.expr.compileVarExpression
 		buf += ";"
 		return buf.toString.replace(";;", ";")
@@ -660,7 +713,13 @@ class VaselinaGenerator extends AbstractGenerator {
 	
 	def varName(varAssignment v){
 		val varCrossRef = v.variable
-		var varname = varCrossRef.varRefs.name
+		var varname = ""
+		if (varCrossRef instanceof varRefs){
+			varname = varCrossRef.vaRefs.name
+		} else if (varCrossRef instanceof arrayRefs){
+			varname = varCrossRef.arrRefs.name
+		}
+		
 		return varname
 	}
 
@@ -714,7 +773,10 @@ class VaselinaGenerator extends AbstractGenerator {
 		buf.append("private static void printstr(String a){ System.out.println(a); }\n")
 		buf.append("private static String strjoin(String a, String b){ a = a.concat(b); return a; }\n")
 		buf.append("private static String[] strsplit(String a, String b){ String[] rtn = a.split(b); return rtn; }\n")
-		buf.append("private static String numtostr(int a){ String rtn = String.valueOf(a); return rtn; }\n")
+		buf.append("private static String anytostr(Object a){ String rtn = String.valueOf(a); return rtn; }\n")
+		buf.append("private static void display(Object a){ System.out.print(a); }\n")
+		buf.append("private static boolean equals(Object a, Object b){ return a.equals(b); }\n")
+		buf.append("private static int length(Object a){ return a.length; }\n")
 
 		// main String arg[] to Map 
 //		buf.append("private static void init(String[] args) {\n")

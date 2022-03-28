@@ -281,22 +281,78 @@ public interface VaselinaPackage extends EPackage
   int VARIABLE = 6;
 
   /**
-   * The feature id for the '<em><b>Var Refs</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE__VAR_REFS = 0;
-
-  /**
    * The number of structural features of the '<em>Variable</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLE_FEATURE_COUNT = 1;
+  int VARIABLE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl <em>array Refs</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl
+   * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getarrayRefs()
+   * @generated
+   */
+  int ARRAY_REFS = 7;
+
+  /**
+   * The feature id for the '<em><b>Arr Refs</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_REFS__ARR_REFS = VARIABLE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Dims</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_REFS__DIMS = VARIABLE_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>array Refs</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_REFS_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.vaselina.impl.varRefsImpl <em>var Refs</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.vaselina.impl.varRefsImpl
+   * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getvarRefs()
+   * @generated
+   */
+  int VAR_REFS = 8;
+
+  /**
+   * The feature id for the '<em><b>Va Refs</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_REFS__VA_REFS = VARIABLE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>var Refs</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_REFS_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.vaselina.impl.varSymbolImpl <em>var Symbol</em>}' class.
@@ -306,7 +362,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getvarSymbol()
    * @generated
    */
-  int VAR_SYMBOL = 7;
+  int VAR_SYMBOL = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -343,10 +399,10 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getarrayDimension()
    * @generated
    */
-  int ARRAY_DIMENSION = 8;
+  int ARRAY_DIMENSION = 10;
 
   /**
-   * The feature id for the '<em><b>Index</b></em>' reference.
+   * The feature id for the '<em><b>Index</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -355,22 +411,13 @@ public interface VaselinaPackage extends EPackage
   int ARRAY_DIMENSION__INDEX = 0;
 
   /**
-   * The feature id for the '<em><b>Size</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ARRAY_DIMENSION__SIZE = 1;
-
-  /**
    * The number of structural features of the '<em>array Dimension</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ARRAY_DIMENSION_FEATURE_COUNT = 2;
+  int ARRAY_DIMENSION_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.vaselina.impl.AbstractMethodCallImpl <em>Abstract Method Call</em>}' class.
@@ -380,7 +427,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getAbstractMethodCall()
    * @generated
    */
-  int ABSTRACT_METHOD_CALL = 12;
+  int ABSTRACT_METHOD_CALL = 14;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -408,7 +455,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getFuncCall()
    * @generated
    */
-  int FUNC_CALL = 9;
+  int FUNC_CALL = 11;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -445,7 +492,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getFuncParameter()
    * @generated
    */
-  int FUNC_PARAMETER = 10;
+  int FUNC_PARAMETER = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -482,7 +529,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getFuncDefinition()
    * @generated
    */
-  int FUNC_DEFINITION = 11;
+  int FUNC_DEFINITION = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -528,7 +575,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getStdFunction()
    * @generated
    */
-  int STD_FUNCTION = 13;
+  int STD_FUNCTION = 15;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -565,7 +612,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getIfExpression()
    * @generated
    */
-  int IF_EXPRESSION = 14;
+  int IF_EXPRESSION = 16;
 
   /**
    * The feature id for the '<em><b>Ifconditon</b></em>' containment reference.
@@ -611,7 +658,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getDoWhileExpression()
    * @generated
    */
-  int DO_WHILE_EXPRESSION = 15;
+  int DO_WHILE_EXPRESSION = 17;
 
   /**
    * The feature id for the '<em><b>Loop Conditon</b></em>' containment reference.
@@ -648,7 +695,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getBrkStr()
    * @generated
    */
-  int BRK_STR = 16;
+  int BRK_STR = 18;
 
   /**
    * The feature id for the '<em><b>Brk</b></em>' attribute.
@@ -676,7 +723,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getReturnDeclaration()
    * @generated
    */
-  int RETURN_DECLARATION = 17;
+  int RETURN_DECLARATION = 19;
 
   /**
    * The feature id for the '<em><b>Rtn Type</b></em>' attribute.
@@ -704,7 +751,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getDOUBLE()
    * @generated
    */
-  int DOUBLE = 18;
+  int DOUBLE = 20;
 
   /**
    * The feature id for the '<em><b>Integer</b></em>' attribute.
@@ -741,7 +788,7 @@ public interface VaselinaPackage extends EPackage
    * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getvarExpression()
    * @generated
    */
-  int VAR_EXPRESSION = 19;
+  int VAR_EXPRESSION = 21;
 
   /**
    * The number of structural features of the '<em>var Expression</em>' class.
@@ -751,71 +798,6 @@ public interface VaselinaPackage extends EPackage
    * @ordered
    */
   int VAR_EXPRESSION_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl <em>array Refs</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl
-   * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getarrayRefs()
-   * @generated
-   */
-  int ARRAY_REFS = 20;
-
-  /**
-   * The feature id for the '<em><b>Var Refs</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ARRAY_REFS__VAR_REFS = VARIABLE__VAR_REFS;
-
-  /**
-   * The feature id for the '<em><b>Dim</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ARRAY_REFS__DIM = VARIABLE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>array Refs</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ARRAY_REFS_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mydsl.vaselina.impl.varRefsImpl <em>var Refs</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl.vaselina.impl.varRefsImpl
-   * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getvarRefs()
-   * @generated
-   */
-  int VAR_REFS = 21;
-
-  /**
-   * The feature id for the '<em><b>Var Refs</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VAR_REFS__VAR_REFS = VARIABLE__VAR_REFS;
-
-  /**
-   * The number of structural features of the '<em>var Refs</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VAR_REFS_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.vaselina.impl.OrImpl <em>Or</em>}' class.
@@ -1543,15 +1525,57 @@ public interface VaselinaPackage extends EPackage
   EClass getVariable();
 
   /**
-   * Returns the meta object for the reference '{@link org.xtext.example.mydsl.vaselina.Variable#getVarRefs <em>Var Refs</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.vaselina.arrayRefs <em>array Refs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Var Refs</em>'.
-   * @see org.xtext.example.mydsl.vaselina.Variable#getVarRefs()
-   * @see #getVariable()
+   * @return the meta object for class '<em>array Refs</em>'.
+   * @see org.xtext.example.mydsl.vaselina.arrayRefs
    * @generated
    */
-  EReference getVariable_VarRefs();
+  EClass getarrayRefs();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.example.mydsl.vaselina.arrayRefs#getArrRefs <em>Arr Refs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Arr Refs</em>'.
+   * @see org.xtext.example.mydsl.vaselina.arrayRefs#getArrRefs()
+   * @see #getarrayRefs()
+   * @generated
+   */
+  EReference getarrayRefs_ArrRefs();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.vaselina.arrayRefs#getDims <em>Dims</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Dims</em>'.
+   * @see org.xtext.example.mydsl.vaselina.arrayRefs#getDims()
+   * @see #getarrayRefs()
+   * @generated
+   */
+  EReference getarrayRefs_Dims();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.vaselina.varRefs <em>var Refs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>var Refs</em>'.
+   * @see org.xtext.example.mydsl.vaselina.varRefs
+   * @generated
+   */
+  EClass getvarRefs();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.example.mydsl.vaselina.varRefs#getVaRefs <em>Va Refs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Va Refs</em>'.
+   * @see org.xtext.example.mydsl.vaselina.varRefs#getVaRefs()
+   * @see #getvarRefs()
+   * @generated
+   */
+  EReference getvarRefs_VaRefs();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.vaselina.varSymbol <em>var Symbol</em>}'.
@@ -1596,26 +1620,15 @@ public interface VaselinaPackage extends EPackage
   EClass getarrayDimension();
 
   /**
-   * Returns the meta object for the reference '{@link org.xtext.example.mydsl.vaselina.arrayDimension#getIndex <em>Index</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.vaselina.arrayDimension#getIndex <em>Index</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Index</em>'.
+   * @return the meta object for the containment reference '<em>Index</em>'.
    * @see org.xtext.example.mydsl.vaselina.arrayDimension#getIndex()
    * @see #getarrayDimension()
    * @generated
    */
   EReference getarrayDimension_Index();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.vaselina.arrayDimension#getSize <em>Size</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Size</em>'.
-   * @see org.xtext.example.mydsl.vaselina.arrayDimension#getSize()
-   * @see #getarrayDimension()
-   * @generated
-   */
-  EAttribute getarrayDimension_Size();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.vaselina.FuncCall <em>Func Call</em>}'.
@@ -1891,37 +1904,6 @@ public interface VaselinaPackage extends EPackage
    * @generated
    */
   EClass getvarExpression();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl.vaselina.arrayRefs <em>array Refs</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>array Refs</em>'.
-   * @see org.xtext.example.mydsl.vaselina.arrayRefs
-   * @generated
-   */
-  EClass getarrayRefs();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.vaselina.arrayRefs#getDim <em>Dim</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Dim</em>'.
-   * @see org.xtext.example.mydsl.vaselina.arrayRefs#getDim()
-   * @see #getarrayRefs()
-   * @generated
-   */
-  EReference getarrayRefs_Dim();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl.vaselina.varRefs <em>var Refs</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>var Refs</em>'.
-   * @see org.xtext.example.mydsl.vaselina.varRefs
-   * @generated
-   */
-  EClass getvarRefs();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.vaselina.Or <em>Or</em>}'.
@@ -2569,12 +2551,48 @@ public interface VaselinaPackage extends EPackage
     EClass VARIABLE = eINSTANCE.getVariable();
 
     /**
-     * The meta object literal for the '<em><b>Var Refs</b></em>' reference feature.
+     * The meta object literal for the '{@link org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl <em>array Refs</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl
+     * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getarrayRefs()
+     * @generated
+     */
+    EClass ARRAY_REFS = eINSTANCE.getarrayRefs();
+
+    /**
+     * The meta object literal for the '<em><b>Arr Refs</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference VARIABLE__VAR_REFS = eINSTANCE.getVariable_VarRefs();
+    EReference ARRAY_REFS__ARR_REFS = eINSTANCE.getarrayRefs_ArrRefs();
+
+    /**
+     * The meta object literal for the '<em><b>Dims</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ARRAY_REFS__DIMS = eINSTANCE.getarrayRefs_Dims();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.vaselina.impl.varRefsImpl <em>var Refs</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.vaselina.impl.varRefsImpl
+     * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getvarRefs()
+     * @generated
+     */
+    EClass VAR_REFS = eINSTANCE.getvarRefs();
+
+    /**
+     * The meta object literal for the '<em><b>Va Refs</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VAR_REFS__VA_REFS = eINSTANCE.getvarRefs_VaRefs();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.vaselina.impl.varSymbolImpl <em>var Symbol</em>}' class.
@@ -2613,20 +2631,12 @@ public interface VaselinaPackage extends EPackage
     EClass ARRAY_DIMENSION = eINSTANCE.getarrayDimension();
 
     /**
-     * The meta object literal for the '<em><b>Index</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Index</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference ARRAY_DIMENSION__INDEX = eINSTANCE.getarrayDimension_Index();
-
-    /**
-     * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ARRAY_DIMENSION__SIZE = eINSTANCE.getarrayDimension_Size();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.vaselina.impl.FuncCallImpl <em>Func Call</em>}' class.
@@ -2857,34 +2867,6 @@ public interface VaselinaPackage extends EPackage
      * @generated
      */
     EClass VAR_EXPRESSION = eINSTANCE.getvarExpression();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl <em>array Refs</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl
-     * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getarrayRefs()
-     * @generated
-     */
-    EClass ARRAY_REFS = eINSTANCE.getarrayRefs();
-
-    /**
-     * The meta object literal for the '<em><b>Dim</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ARRAY_REFS__DIM = eINSTANCE.getarrayRefs_Dim();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl.vaselina.impl.varRefsImpl <em>var Refs</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl.vaselina.impl.varRefsImpl
-     * @see org.xtext.example.mydsl.vaselina.impl.VaselinaPackageImpl#getvarRefs()
-     * @generated
-     */
-    EClass VAR_REFS = eINSTANCE.getvarRefs();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.vaselina.impl.OrImpl <em>Or</em>}' class.

@@ -5,6 +5,7 @@ package org.xtext.example.mydsl.vaselina.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -12,12 +13,15 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.vaselina.VaselinaPackage;
 import org.xtext.example.mydsl.vaselina.arrayDimension;
 import org.xtext.example.mydsl.vaselina.arrayRefs;
+import org.xtext.example.mydsl.vaselina.varSymbol;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +31,8 @@ import org.xtext.example.mydsl.vaselina.arrayRefs;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl#getDim <em>Dim</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl#getArrRefs <em>Arr Refs</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.vaselina.impl.arrayRefsImpl#getDims <em>Dims</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,14 +40,24 @@ import org.xtext.example.mydsl.vaselina.arrayRefs;
 public class arrayRefsImpl extends VariableImpl implements arrayRefs
 {
   /**
-   * The cached value of the '{@link #getDim() <em>Dim</em>}' containment reference list.
+   * The cached value of the '{@link #getArrRefs() <em>Arr Refs</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDim()
+   * @see #getArrRefs()
    * @generated
    * @ordered
    */
-  protected EList<arrayDimension> dim;
+  protected varSymbol arrRefs;
+
+  /**
+   * The cached value of the '{@link #getDims() <em>Dims</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDims()
+   * @generated
+   * @ordered
+   */
+  protected EList<arrayDimension> dims;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,13 +86,58 @@ public class arrayRefsImpl extends VariableImpl implements arrayRefs
    * @generated
    */
   @Override
-  public EList<arrayDimension> getDim()
+  public varSymbol getArrRefs()
   {
-    if (dim == null)
+    if (arrRefs != null && arrRefs.eIsProxy())
     {
-      dim = new EObjectContainmentEList<arrayDimension>(arrayDimension.class, this, VaselinaPackage.ARRAY_REFS__DIM);
+      InternalEObject oldArrRefs = (InternalEObject)arrRefs;
+      arrRefs = (varSymbol)eResolveProxy(oldArrRefs);
+      if (arrRefs != oldArrRefs)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, VaselinaPackage.ARRAY_REFS__ARR_REFS, oldArrRefs, arrRefs));
+      }
     }
-    return dim;
+    return arrRefs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public varSymbol basicGetArrRefs()
+  {
+    return arrRefs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setArrRefs(varSymbol newArrRefs)
+  {
+    varSymbol oldArrRefs = arrRefs;
+    arrRefs = newArrRefs;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, VaselinaPackage.ARRAY_REFS__ARR_REFS, oldArrRefs, arrRefs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<arrayDimension> getDims()
+  {
+    if (dims == null)
+    {
+      dims = new EObjectContainmentEList<arrayDimension>(arrayDimension.class, this, VaselinaPackage.ARRAY_REFS__DIMS);
+    }
+    return dims;
   }
 
   /**
@@ -90,8 +150,8 @@ public class arrayRefsImpl extends VariableImpl implements arrayRefs
   {
     switch (featureID)
     {
-      case VaselinaPackage.ARRAY_REFS__DIM:
-        return ((InternalEList<?>)getDim()).basicRemove(otherEnd, msgs);
+      case VaselinaPackage.ARRAY_REFS__DIMS:
+        return ((InternalEList<?>)getDims()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -106,8 +166,11 @@ public class arrayRefsImpl extends VariableImpl implements arrayRefs
   {
     switch (featureID)
     {
-      case VaselinaPackage.ARRAY_REFS__DIM:
-        return getDim();
+      case VaselinaPackage.ARRAY_REFS__ARR_REFS:
+        if (resolve) return getArrRefs();
+        return basicGetArrRefs();
+      case VaselinaPackage.ARRAY_REFS__DIMS:
+        return getDims();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -123,9 +186,12 @@ public class arrayRefsImpl extends VariableImpl implements arrayRefs
   {
     switch (featureID)
     {
-      case VaselinaPackage.ARRAY_REFS__DIM:
-        getDim().clear();
-        getDim().addAll((Collection<? extends arrayDimension>)newValue);
+      case VaselinaPackage.ARRAY_REFS__ARR_REFS:
+        setArrRefs((varSymbol)newValue);
+        return;
+      case VaselinaPackage.ARRAY_REFS__DIMS:
+        getDims().clear();
+        getDims().addAll((Collection<? extends arrayDimension>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,8 +207,11 @@ public class arrayRefsImpl extends VariableImpl implements arrayRefs
   {
     switch (featureID)
     {
-      case VaselinaPackage.ARRAY_REFS__DIM:
-        getDim().clear();
+      case VaselinaPackage.ARRAY_REFS__ARR_REFS:
+        setArrRefs((varSymbol)null);
+        return;
+      case VaselinaPackage.ARRAY_REFS__DIMS:
+        getDims().clear();
         return;
     }
     super.eUnset(featureID);
@@ -158,8 +227,10 @@ public class arrayRefsImpl extends VariableImpl implements arrayRefs
   {
     switch (featureID)
     {
-      case VaselinaPackage.ARRAY_REFS__DIM:
-        return dim != null && !dim.isEmpty();
+      case VaselinaPackage.ARRAY_REFS__ARR_REFS:
+        return arrRefs != null;
+      case VaselinaPackage.ARRAY_REFS__DIMS:
+        return dims != null && !dims.isEmpty();
     }
     return super.eIsSet(featureID);
   }

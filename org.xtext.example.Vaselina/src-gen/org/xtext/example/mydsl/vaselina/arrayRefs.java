@@ -14,7 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.vaselina.arrayRefs#getDim <em>Dim</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.vaselina.arrayRefs#getArrRefs <em>Arr Refs</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.vaselina.arrayRefs#getDims <em>Dims</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getarrayRefs()
@@ -24,15 +25,37 @@ import org.eclipse.emf.common.util.EList;
 public interface arrayRefs extends Variable
 {
   /**
-   * Returns the value of the '<em><b>Dim</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Arr Refs</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Arr Refs</em>' reference.
+   * @see #setArrRefs(varSymbol)
+   * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getarrayRefs_ArrRefs()
+   * @model
+   * @generated
+   */
+  varSymbol getArrRefs();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.vaselina.arrayRefs#getArrRefs <em>Arr Refs</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Arr Refs</em>' reference.
+   * @see #getArrRefs()
+   * @generated
+   */
+  void setArrRefs(varSymbol value);
+
+  /**
+   * Returns the value of the '<em><b>Dims</b></em>' containment reference list.
    * The list contents are of type {@link org.xtext.example.mydsl.vaselina.arrayDimension}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Dim</em>' containment reference list.
-   * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getarrayRefs_Dim()
+   * @return the value of the '<em>Dims</em>' containment reference list.
+   * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getarrayRefs_Dims()
    * @model containment="true"
    * @generated
    */
-  EList<arrayDimension> getDim();
+  EList<arrayDimension> getDims();
 
 } // arrayRefs

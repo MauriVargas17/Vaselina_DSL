@@ -129,7 +129,7 @@ public class VaselinaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				sequence_Terminal(context, (arrayRef) semanticObject); 
 				return; 
 			case VaselinaPackage.ARRAY_REFS:
-				sequence_Variable(context, (arrayRefs) semanticObject); 
+				sequence_arrayRefs(context, (arrayRefs) semanticObject); 
 				return; 
 			case VaselinaPackage.BOOL_REF:
 				sequence_Terminal(context, (boolRef) semanticObject); 
@@ -153,7 +153,7 @@ public class VaselinaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				sequence_Terminal(context, (varRef) semanticObject); 
 				return; 
 			case VaselinaPackage.VAR_REFS:
-				sequence_Variable(context, (varRefs) semanticObject); 
+				sequence_varRefs(context, (varRefs) semanticObject); 
 				return; 
 			case VaselinaPackage.VAR_RETURN:
 				sequence_varReturn(context, (varReturn) semanticObject); 
@@ -818,40 +818,6 @@ public class VaselinaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Variable returns arrayRefs
-	 *
-	 * Constraint:
-	 *     (varRefs=[varSymbol|ID] dim+=arrayDimension+)
-	 * </pre>
-	 */
-	protected void sequence_Variable(ISerializationContext context, arrayRefs semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Variable returns varRefs
-	 *
-	 * Constraint:
-	 *     varRefs=[varSymbol|ID]
-	 * </pre>
-	 */
-	protected void sequence_Variable(ISerializationContext context, varRefs semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, VaselinaPackage.Literals.VARIABLE__VAR_REFS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VaselinaPackage.Literals.VARIABLE__VAR_REFS));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getVariableAccess().getVarRefsVarSymbolIDTerminalRuleCall_1_1_0_1(), semanticObject.eGet(VaselinaPackage.Literals.VARIABLE__VAR_REFS, false));
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     VaselinaProgram returns VaselinaProgram
 	 *
 	 * Constraint:
@@ -869,10 +835,31 @@ public class VaselinaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     arrayDimension returns arrayDimension
 	 *
 	 * Constraint:
-	 *     (index=[varSymbol|ID] | size=NUM)
+	 *     index=Terminal
 	 * </pre>
 	 */
 	protected void sequence_arrayDimension(ISerializationContext context, arrayDimension semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, VaselinaPackage.Literals.ARRAY_DIMENSION__INDEX) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VaselinaPackage.Literals.ARRAY_DIMENSION__INDEX));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getArrayDimensionAccess().getIndexTerminalParserRuleCall_2_0(), semanticObject.getIndex());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Variable returns arrayRefs
+	 *     arrayRefs returns arrayRefs
+	 *
+	 * Constraint:
+	 *     (arrRefs=[varSymbol|ID] dims+=arrayDimension+)
+	 * </pre>
+	 */
+	protected void sequence_arrayRefs(ISerializationContext context, arrayRefs semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -923,11 +910,32 @@ public class VaselinaSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     varSymbol returns varDeclared
 	 *
 	 * Constraint:
-	 *     (scope='box' (name=ID | (name=ID dim+=arrayDimension+)) type=varTypeLiteral)
+	 *     (((scope='box' name=ID) | (scope='boxes' name=ID dim+=arrayDimension+)) type=varTypeLiteral)
 	 * </pre>
 	 */
 	protected void sequence_varDeclared(ISerializationContext context, varDeclared semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Variable returns varRefs
+	 *     varRefs returns varRefs
+	 *
+	 * Constraint:
+	 *     vaRefs=[varSymbol|ID]
+	 * </pre>
+	 */
+	protected void sequence_varRefs(ISerializationContext context, varRefs semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, VaselinaPackage.Literals.VAR_REFS__VA_REFS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VaselinaPackage.Literals.VAR_REFS__VA_REFS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getVarRefsAccess().getVaRefsVarSymbolIDTerminalRuleCall_1_0_1(), semanticObject.eGet(VaselinaPackage.Literals.VAR_REFS__VA_REFS, false));
+		feeder.finish();
 	}
 	
 	

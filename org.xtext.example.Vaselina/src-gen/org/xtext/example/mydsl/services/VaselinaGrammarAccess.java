@@ -206,70 +206,82 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Vaselina.varDeclared");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVarDeclaredAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cScopeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cScopeBoxKeyword_1_0 = (Keyword)cScopeAssignment_1.eContents().get(0);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Assignment cNameAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_2_0_0 = (RuleCall)cNameAssignment_2_0.eContents().get(0);
-		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
-		private final Assignment cNameAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_2_1_0_0 = (RuleCall)cNameAssignment_2_1_0.eContents().get(0);
-		private final Assignment cDimAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
-		private final RuleCall cDimArrayDimensionParserRuleCall_2_1_1_0 = (RuleCall)cDimAssignment_2_1_1.eContents().get(0);
-		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cTypeVarTypeLiteralParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Assignment cScopeAssignment_1_0_0 = (Assignment)cGroup_1_0.eContents().get(0);
+		private final Keyword cScopeBoxKeyword_1_0_0_0 = (Keyword)cScopeAssignment_1_0_0.eContents().get(0);
+		private final Assignment cNameAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0_1_0 = (RuleCall)cNameAssignment_1_0_1.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Assignment cScopeAssignment_1_1_0 = (Assignment)cGroup_1_1.eContents().get(0);
+		private final Keyword cScopeBoxesKeyword_1_1_0_0 = (Keyword)cScopeAssignment_1_1_0.eContents().get(0);
+		private final Assignment cNameAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_1_1_0 = (RuleCall)cNameAssignment_1_1_1.eContents().get(0);
+		private final Assignment cDimAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cDimArrayDimensionParserRuleCall_1_1_2_0 = (RuleCall)cDimAssignment_1_1_2.eContents().get(0);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypeVarTypeLiteralParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
 		
 		//varDeclared:
 		//    {varDeclared}
-		//    scope='box' (name=ID | name=ID (dim+=arrayDimension)+) ':' type=varTypeLiteral;
+		//    (scope='box' name=ID | scope='boxes' name=ID (dim+=arrayDimension)+) ':' type=varTypeLiteral;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{varDeclared}
-		//scope='box' (name=ID | name=ID (dim+=arrayDimension)+) ':' type=varTypeLiteral
+		//(scope='box' name=ID | scope='boxes' name=ID (dim+=arrayDimension)+) ':' type=varTypeLiteral
 		public Group getGroup() { return cGroup; }
 		
 		//{varDeclared}
 		public Action getVarDeclaredAction_0() { return cVarDeclaredAction_0; }
 		
+		//(scope='box' name=ID | scope='boxes' name=ID (dim+=arrayDimension)+)
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//scope='box' name=ID
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
 		//scope='box'
-		public Assignment getScopeAssignment_1() { return cScopeAssignment_1; }
+		public Assignment getScopeAssignment_1_0_0() { return cScopeAssignment_1_0_0; }
 		
 		//'box'
-		public Keyword getScopeBoxKeyword_1_0() { return cScopeBoxKeyword_1_0; }
-		
-		//(name=ID | name=ID (dim+=arrayDimension)+)
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		public Keyword getScopeBoxKeyword_1_0_0_0() { return cScopeBoxKeyword_1_0_0_0; }
 		
 		//name=ID
-		public Assignment getNameAssignment_2_0() { return cNameAssignment_2_0; }
+		public Assignment getNameAssignment_1_0_1() { return cNameAssignment_1_0_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_0_0() { return cNameIDTerminalRuleCall_2_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_1_0_1_0() { return cNameIDTerminalRuleCall_1_0_1_0; }
 		
-		//name=ID (dim+=arrayDimension)+
-		public Group getGroup_2_1() { return cGroup_2_1; }
+		//scope='boxes' name=ID (dim+=arrayDimension)+
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//scope='boxes'
+		public Assignment getScopeAssignment_1_1_0() { return cScopeAssignment_1_1_0; }
+		
+		//'boxes'
+		public Keyword getScopeBoxesKeyword_1_1_0_0() { return cScopeBoxesKeyword_1_1_0_0; }
 		
 		//name=ID
-		public Assignment getNameAssignment_2_1_0() { return cNameAssignment_2_1_0; }
+		public Assignment getNameAssignment_1_1_1() { return cNameAssignment_1_1_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_1_0_0() { return cNameIDTerminalRuleCall_2_1_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_1_1_1_0() { return cNameIDTerminalRuleCall_1_1_1_0; }
 		
 		//(dim+=arrayDimension)+
-		public Assignment getDimAssignment_2_1_1() { return cDimAssignment_2_1_1; }
+		public Assignment getDimAssignment_1_1_2() { return cDimAssignment_1_1_2; }
 		
 		//arrayDimension
-		public RuleCall getDimArrayDimensionParserRuleCall_2_1_1_0() { return cDimArrayDimensionParserRuleCall_2_1_1_0; }
+		public RuleCall getDimArrayDimensionParserRuleCall_1_1_2_0() { return cDimArrayDimensionParserRuleCall_1_1_2_0; }
 		
 		//':'
-		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
 		//type=varTypeLiteral
-		public Assignment getTypeAssignment_4() { return cTypeAssignment_4; }
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 		
 		//varTypeLiteral
-		public RuleCall getTypeVarTypeLiteralParserRuleCall_4_0() { return cTypeVarTypeLiteralParserRuleCall_4_0; }
+		public RuleCall getTypeVarTypeLiteralParserRuleCall_3_0() { return cTypeVarTypeLiteralParserRuleCall_3_0; }
 	}
 	public class VarAssignmentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Vaselina.varAssignment");
@@ -305,64 +317,86 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	public class VariableElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Vaselina.Variable");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cArrayRefsAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Assignment cVarRefsAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final CrossReference cVarRefsVarSymbolCrossReference_0_1_0 = (CrossReference)cVarRefsAssignment_0_1.eContents().get(0);
-		private final RuleCall cVarRefsVarSymbolIDTerminalRuleCall_0_1_0_1 = (RuleCall)cVarRefsVarSymbolCrossReference_0_1_0.eContents().get(1);
-		private final Assignment cDimAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cDimArrayDimensionParserRuleCall_0_2_0 = (RuleCall)cDimAssignment_0_2.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cVarRefsAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Assignment cVarRefsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final CrossReference cVarRefsVarSymbolCrossReference_1_1_0 = (CrossReference)cVarRefsAssignment_1_1.eContents().get(0);
-		private final RuleCall cVarRefsVarSymbolIDTerminalRuleCall_1_1_0_1 = (RuleCall)cVarRefsVarSymbolCrossReference_1_1_0.eContents().get(1);
+		private final RuleCall cArrayRefsParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cVarRefsParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Variable:
-		//    {arrayRefs} varRefs=[varSymbol] (dim+=arrayDimension)+
-		//    | {varRefs} varRefs=[varSymbol]
+		//    arrayRefs | varRefs
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{arrayRefs} varRefs=[varSymbol] (dim+=arrayDimension)+
-		//| {varRefs} varRefs=[varSymbol]
+		//arrayRefs | varRefs
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{arrayRefs} varRefs=[varSymbol] (dim+=arrayDimension)+
-		public Group getGroup_0() { return cGroup_0; }
+		//arrayRefs
+		public RuleCall getArrayRefsParserRuleCall_0() { return cArrayRefsParserRuleCall_0; }
+		
+		//varRefs
+		public RuleCall getVarRefsParserRuleCall_1() { return cVarRefsParserRuleCall_1; }
+	}
+	public class ArrayRefsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Vaselina.arrayRefs");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cArrayRefsAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cArrRefsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cArrRefsVarSymbolCrossReference_1_0 = (CrossReference)cArrRefsAssignment_1.eContents().get(0);
+		private final RuleCall cArrRefsVarSymbolIDTerminalRuleCall_1_0_1 = (RuleCall)cArrRefsVarSymbolCrossReference_1_0.eContents().get(1);
+		private final Assignment cDimsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cDimsArrayDimensionParserRuleCall_2_0 = (RuleCall)cDimsAssignment_2.eContents().get(0);
+		
+		//arrayRefs:
+		//    {arrayRefs} arrRefs=[varSymbol] (dims+=arrayDimension)+
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{arrayRefs} arrRefs=[varSymbol] (dims+=arrayDimension)+
+		public Group getGroup() { return cGroup; }
 		
 		//{arrayRefs}
-		public Action getArrayRefsAction_0_0() { return cArrayRefsAction_0_0; }
+		public Action getArrayRefsAction_0() { return cArrayRefsAction_0; }
 		
-		//varRefs=[varSymbol]
-		public Assignment getVarRefsAssignment_0_1() { return cVarRefsAssignment_0_1; }
+		//arrRefs=[varSymbol]
+		public Assignment getArrRefsAssignment_1() { return cArrRefsAssignment_1; }
 		
 		//[varSymbol]
-		public CrossReference getVarRefsVarSymbolCrossReference_0_1_0() { return cVarRefsVarSymbolCrossReference_0_1_0; }
+		public CrossReference getArrRefsVarSymbolCrossReference_1_0() { return cArrRefsVarSymbolCrossReference_1_0; }
 		
 		//ID
-		public RuleCall getVarRefsVarSymbolIDTerminalRuleCall_0_1_0_1() { return cVarRefsVarSymbolIDTerminalRuleCall_0_1_0_1; }
+		public RuleCall getArrRefsVarSymbolIDTerminalRuleCall_1_0_1() { return cArrRefsVarSymbolIDTerminalRuleCall_1_0_1; }
 		
-		//(dim+=arrayDimension)+
-		public Assignment getDimAssignment_0_2() { return cDimAssignment_0_2; }
+		//(dims+=arrayDimension)+
+		public Assignment getDimsAssignment_2() { return cDimsAssignment_2; }
 		
 		//arrayDimension
-		public RuleCall getDimArrayDimensionParserRuleCall_0_2_0() { return cDimArrayDimensionParserRuleCall_0_2_0; }
+		public RuleCall getDimsArrayDimensionParserRuleCall_2_0() { return cDimsArrayDimensionParserRuleCall_2_0; }
+	}
+	public class VarRefsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Vaselina.varRefs");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVarRefsAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cVaRefsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cVaRefsVarSymbolCrossReference_1_0 = (CrossReference)cVaRefsAssignment_1.eContents().get(0);
+		private final RuleCall cVaRefsVarSymbolIDTerminalRuleCall_1_0_1 = (RuleCall)cVaRefsVarSymbolCrossReference_1_0.eContents().get(1);
 		
-		//{varRefs} varRefs=[varSymbol]
-		public Group getGroup_1() { return cGroup_1; }
+		//varRefs:
+		//    {varRefs} vaRefs=[varSymbol]
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{varRefs} vaRefs=[varSymbol]
+		public Group getGroup() { return cGroup; }
 		
 		//{varRefs}
-		public Action getVarRefsAction_1_0() { return cVarRefsAction_1_0; }
+		public Action getVarRefsAction_0() { return cVarRefsAction_0; }
 		
-		//varRefs=[varSymbol]
-		public Assignment getVarRefsAssignment_1_1() { return cVarRefsAssignment_1_1; }
+		//vaRefs=[varSymbol]
+		public Assignment getVaRefsAssignment_1() { return cVaRefsAssignment_1; }
 		
 		//[varSymbol]
-		public CrossReference getVarRefsVarSymbolCrossReference_1_1_0() { return cVarRefsVarSymbolCrossReference_1_1_0; }
+		public CrossReference getVaRefsVarSymbolCrossReference_1_0() { return cVaRefsVarSymbolCrossReference_1_0; }
 		
 		//ID
-		public RuleCall getVarRefsVarSymbolIDTerminalRuleCall_1_1_0_1() { return cVarRefsVarSymbolIDTerminalRuleCall_1_1_0_1; }
+		public RuleCall getVaRefsVarSymbolIDTerminalRuleCall_1_0_1() { return cVaRefsVarSymbolIDTerminalRuleCall_1_0_1; }
 	}
 	public class VarSymbolElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Vaselina.varSymbol");
@@ -389,21 +423,17 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cArrayDimensionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Assignment cIndexAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final CrossReference cIndexVarSymbolCrossReference_2_0_0 = (CrossReference)cIndexAssignment_2_0.eContents().get(0);
-		private final RuleCall cIndexVarSymbolIDTerminalRuleCall_2_0_0_1 = (RuleCall)cIndexVarSymbolCrossReference_2_0_0.eContents().get(1);
-		private final Assignment cSizeAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
-		private final RuleCall cSizeNUMTerminalRuleCall_2_1_0 = (RuleCall)cSizeAssignment_2_1.eContents().get(0);
+		private final Assignment cIndexAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cIndexTerminalParserRuleCall_2_0 = (RuleCall)cIndexAssignment_2.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//arrayDimension:
 		//    {arrayDimension}
-		//    '[' (index=[varSymbol] | size=NUM) ']';
+		//    '[' index=Terminal ']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{arrayDimension}
-		//'[' (index=[varSymbol] | size=NUM) ']'
+		//'[' index=Terminal ']'
 		public Group getGroup() { return cGroup; }
 		
 		//{arrayDimension}
@@ -412,23 +442,11 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'['
 		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 		
-		//(index=[varSymbol] | size=NUM)
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		//index=Terminal
+		public Assignment getIndexAssignment_2() { return cIndexAssignment_2; }
 		
-		//index=[varSymbol]
-		public Assignment getIndexAssignment_2_0() { return cIndexAssignment_2_0; }
-		
-		//[varSymbol]
-		public CrossReference getIndexVarSymbolCrossReference_2_0_0() { return cIndexVarSymbolCrossReference_2_0_0; }
-		
-		//ID
-		public RuleCall getIndexVarSymbolIDTerminalRuleCall_2_0_0_1() { return cIndexVarSymbolIDTerminalRuleCall_2_0_0_1; }
-		
-		//size=NUM
-		public Assignment getSizeAssignment_2_1() { return cSizeAssignment_2_1; }
-		
-		//NUM
-		public RuleCall getSizeNUMTerminalRuleCall_2_1_0() { return cSizeNUMTerminalRuleCall_2_1_0; }
+		//Terminal
+		public RuleCall getIndexTerminalParserRuleCall_2_0() { return cIndexTerminalParserRuleCall_2_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
@@ -650,34 +668,46 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	public class StdfunctionListElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Vaselina.StdfunctionList");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cPrintstrKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cStrjoinKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cStrsplitKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cNumtostrKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cGetargsKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cDisplayKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cPrintstrKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cStrjoinKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cStrsplitKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cAnytostrKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cGetargsKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cEqualsKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cLengthKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
 		
 		//StdfunctionList:
-		//    'printstr' | 'strjoin' | 'strsplit' | 'numtostr' | 'getargs'
+		//    'display' | 'printstr' | 'strjoin' | 'strsplit' | 'anytostr' | 'getargs' | 'equals' | 'length'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'printstr' | 'strjoin' | 'strsplit' | 'numtostr' | 'getargs'
+		//'display' | 'printstr' | 'strjoin' | 'strsplit' | 'anytostr' | 'getargs' | 'equals' | 'length'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
+		//'display'
+		public Keyword getDisplayKeyword_0() { return cDisplayKeyword_0; }
+		
 		//'printstr'
-		public Keyword getPrintstrKeyword_0() { return cPrintstrKeyword_0; }
+		public Keyword getPrintstrKeyword_1() { return cPrintstrKeyword_1; }
 		
 		//'strjoin'
-		public Keyword getStrjoinKeyword_1() { return cStrjoinKeyword_1; }
+		public Keyword getStrjoinKeyword_2() { return cStrjoinKeyword_2; }
 		
 		//'strsplit'
-		public Keyword getStrsplitKeyword_2() { return cStrsplitKeyword_2; }
+		public Keyword getStrsplitKeyword_3() { return cStrsplitKeyword_3; }
 		
-		//'numtostr'
-		public Keyword getNumtostrKeyword_3() { return cNumtostrKeyword_3; }
+		//'anytostr'
+		public Keyword getAnytostrKeyword_4() { return cAnytostrKeyword_4; }
 		
 		//'getargs'
-		public Keyword getGetargsKeyword_4() { return cGetargsKeyword_4; }
+		public Keyword getGetargsKeyword_5() { return cGetargsKeyword_5; }
+		
+		//'equals'
+		public Keyword getEqualsKeyword_6() { return cEqualsKeyword_6; }
+		
+		//'length'
+		public Keyword getLengthKeyword_7() { return cLengthKeyword_7; }
 	}
 	public class StdFunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Vaselina.StdFunction");
@@ -1546,6 +1576,8 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	private final VarDeclaredElements pVarDeclared;
 	private final VarAssignmentElements pVarAssignment;
 	private final VariableElements pVariable;
+	private final ArrayRefsElements pArrayRefs;
+	private final VarRefsElements pVarRefs;
 	private final VarSymbolElements pVarSymbol;
 	private final ArrayDimensionElements pArrayDimension;
 	private final FuncCallElements pFuncCall;
@@ -1589,6 +1621,8 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.pVarDeclared = new VarDeclaredElements();
 		this.pVarAssignment = new VarAssignmentElements();
 		this.pVariable = new VariableElements();
+		this.pArrayRefs = new ArrayRefsElements();
+		this.pVarRefs = new VarRefsElements();
 		this.pVarSymbol = new VarSymbolElements();
 		this.pArrayDimension = new ArrayDimensionElements();
 		this.pFuncCall = new FuncCallElements();
@@ -1703,7 +1737,7 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	//varDeclared:
 	//    {varDeclared}
-	//    scope='box' (name=ID | name=ID (dim+=arrayDimension)+) ':' type=varTypeLiteral;
+	//    (scope='box' name=ID | scope='boxes' name=ID (dim+=arrayDimension)+) ':' type=varTypeLiteral;
 	public VarDeclaredElements getVarDeclaredAccess() {
 		return pVarDeclared;
 	}
@@ -1723,8 +1757,7 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//Variable:
-	//    {arrayRefs} varRefs=[varSymbol] (dim+=arrayDimension)+
-	//    | {varRefs} varRefs=[varSymbol]
+	//    arrayRefs | varRefs
 	//;
 	public VariableElements getVariableAccess() {
 		return pVariable;
@@ -1732,6 +1765,28 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	public ParserRule getVariableRule() {
 		return getVariableAccess().getRule();
+	}
+	
+	//arrayRefs:
+	//    {arrayRefs} arrRefs=[varSymbol] (dims+=arrayDimension)+
+	//;
+	public ArrayRefsElements getArrayRefsAccess() {
+		return pArrayRefs;
+	}
+	
+	public ParserRule getArrayRefsRule() {
+		return getArrayRefsAccess().getRule();
+	}
+	
+	//varRefs:
+	//    {varRefs} vaRefs=[varSymbol]
+	//;
+	public VarRefsElements getVarRefsAccess() {
+		return pVarRefs;
+	}
+	
+	public ParserRule getVarRefsRule() {
+		return getVarRefsAccess().getRule();
 	}
 	
 	//varSymbol:
@@ -1747,7 +1802,7 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	//arrayDimension:
 	//    {arrayDimension}
-	//    '[' (index=[varSymbol] | size=NUM) ']';
+	//    '[' index=Terminal ']';
 	public ArrayDimensionElements getArrayDimensionAccess() {
 		return pArrayDimension;
 	}
@@ -1811,7 +1866,7 @@ public class VaselinaGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//StdfunctionList:
-	//    'printstr' | 'strjoin' | 'strsplit' | 'numtostr' | 'getargs'
+	//    'display' | 'printstr' | 'strjoin' | 'strsplit' | 'anytostr' | 'getargs' | 'equals' | 'length'
 	//;
 	public StdfunctionListElements getStdfunctionListAccess() {
 		return pStdfunctionList;

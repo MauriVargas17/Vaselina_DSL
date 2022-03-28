@@ -162,6 +162,22 @@ public class VaselinaSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case VaselinaPackage.ARRAY_REFS:
+      {
+        arrayRefs arrayRefs = (arrayRefs)theEObject;
+        T result = casearrayRefs(arrayRefs);
+        if (result == null) result = caseVariable(arrayRefs);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case VaselinaPackage.VAR_REFS:
+      {
+        varRefs varRefs = (varRefs)theEObject;
+        T result = casevarRefs(varRefs);
+        if (result == null) result = caseVariable(varRefs);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case VaselinaPackage.VAR_SYMBOL:
       {
         varSymbol varSymbol = (varSymbol)theEObject;
@@ -263,22 +279,6 @@ public class VaselinaSwitch<T> extends Switch<T>
       {
         varExpression varExpression = (varExpression)theEObject;
         T result = casevarExpression(varExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case VaselinaPackage.ARRAY_REFS:
-      {
-        arrayRefs arrayRefs = (arrayRefs)theEObject;
-        T result = casearrayRefs(arrayRefs);
-        if (result == null) result = caseVariable(arrayRefs);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case VaselinaPackage.VAR_REFS:
-      {
-        varRefs varRefs = (varRefs)theEObject;
-        T result = casevarRefs(varRefs);
-        if (result == null) result = caseVariable(varRefs);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -519,6 +519,38 @@ public class VaselinaSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>array Refs</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>array Refs</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casearrayRefs(arrayRefs object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>var Refs</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>var Refs</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casevarRefs(varRefs object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>var Symbol</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -722,38 +754,6 @@ public class VaselinaSwitch<T> extends Switch<T>
    * @generated
    */
   public T casevarExpression(varExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>array Refs</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>array Refs</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casearrayRefs(arrayRefs object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>var Refs</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>var Refs</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casevarRefs(varRefs object)
   {
     return null;
   }

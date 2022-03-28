@@ -87,6 +87,24 @@ public interface VaselinaFactory extends EFactory
   Variable createVariable();
 
   /**
+   * Returns a new object of class '<em>array Refs</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>array Refs</em>'.
+   * @generated
+   */
+  arrayRefs createarrayRefs();
+
+  /**
+   * Returns a new object of class '<em>var Refs</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>var Refs</em>'.
+   * @generated
+   */
+  varRefs createvarRefs();
+
+  /**
    * Returns a new object of class '<em>var Symbol</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -202,24 +220,6 @@ public interface VaselinaFactory extends EFactory
    * @generated
    */
   varExpression createvarExpression();
-
-  /**
-   * Returns a new object of class '<em>array Refs</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>array Refs</em>'.
-   * @generated
-   */
-  arrayRefs createarrayRefs();
-
-  /**
-   * Returns a new object of class '<em>var Refs</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>var Refs</em>'.
-   * @generated
-   */
-  varRefs createvarRefs();
 
   /**
    * Returns a new object of class '<em>Or</em>'.

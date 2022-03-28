@@ -4,6 +4,7 @@
 package org.xtext.example.mydsl.vaselina.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -13,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.vaselina.VaselinaPackage;
 import org.xtext.example.mydsl.vaselina.arrayDimension;
-import org.xtext.example.mydsl.vaselina.varSymbol;
+import org.xtext.example.mydsl.vaselina.varExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +25,6 @@ import org.xtext.example.mydsl.vaselina.varSymbol;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.vaselina.impl.arrayDimensionImpl#getIndex <em>Index</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.vaselina.impl.arrayDimensionImpl#getSize <em>Size</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,34 +32,14 @@ import org.xtext.example.mydsl.vaselina.varSymbol;
 public class arrayDimensionImpl extends MinimalEObjectImpl.Container implements arrayDimension
 {
   /**
-   * The cached value of the '{@link #getIndex() <em>Index</em>}' reference.
+   * The cached value of the '{@link #getIndex() <em>Index</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getIndex()
    * @generated
    * @ordered
    */
-  protected varSymbol index;
-
-  /**
-   * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSize()
-   * @generated
-   * @ordered
-   */
-  protected static final int SIZE_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSize()
-   * @generated
-   * @ordered
-   */
-  protected int size = SIZE_EDEFAULT;
+  protected varExpression index;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,27 +68,7 @@ public class arrayDimensionImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public varSymbol getIndex()
-  {
-    if (index != null && index.eIsProxy())
-    {
-      InternalEObject oldIndex = (InternalEObject)index;
-      index = (varSymbol)eResolveProxy(oldIndex);
-      if (index != oldIndex)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, VaselinaPackage.ARRAY_DIMENSION__INDEX, oldIndex, index));
-      }
-    }
-    return index;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public varSymbol basicGetIndex()
+  public varExpression getIndex()
   {
     return index;
   }
@@ -118,13 +78,16 @@ public class arrayDimensionImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setIndex(varSymbol newIndex)
+  public NotificationChain basicSetIndex(varExpression newIndex, NotificationChain msgs)
   {
-    varSymbol oldIndex = index;
+    varExpression oldIndex = index;
     index = newIndex;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, VaselinaPackage.ARRAY_DIMENSION__INDEX, oldIndex, index));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VaselinaPackage.ARRAY_DIMENSION__INDEX, oldIndex, newIndex);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -133,9 +96,20 @@ public class arrayDimensionImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public int getSize()
+  public void setIndex(varExpression newIndex)
   {
-    return size;
+    if (newIndex != index)
+    {
+      NotificationChain msgs = null;
+      if (index != null)
+        msgs = ((InternalEObject)index).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VaselinaPackage.ARRAY_DIMENSION__INDEX, null, msgs);
+      if (newIndex != null)
+        msgs = ((InternalEObject)newIndex).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VaselinaPackage.ARRAY_DIMENSION__INDEX, null, msgs);
+      msgs = basicSetIndex(newIndex, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, VaselinaPackage.ARRAY_DIMENSION__INDEX, newIndex, newIndex));
   }
 
   /**
@@ -144,12 +118,14 @@ public class arrayDimensionImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public void setSize(int newSize)
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    int oldSize = size;
-    size = newSize;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, VaselinaPackage.ARRAY_DIMENSION__SIZE, oldSize, size));
+    switch (featureID)
+    {
+      case VaselinaPackage.ARRAY_DIMENSION__INDEX:
+        return basicSetIndex(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -163,10 +139,7 @@ public class arrayDimensionImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case VaselinaPackage.ARRAY_DIMENSION__INDEX:
-        if (resolve) return getIndex();
-        return basicGetIndex();
-      case VaselinaPackage.ARRAY_DIMENSION__SIZE:
-        return getSize();
+        return getIndex();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -182,10 +155,7 @@ public class arrayDimensionImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case VaselinaPackage.ARRAY_DIMENSION__INDEX:
-        setIndex((varSymbol)newValue);
-        return;
-      case VaselinaPackage.ARRAY_DIMENSION__SIZE:
-        setSize((Integer)newValue);
+        setIndex((varExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -202,10 +172,7 @@ public class arrayDimensionImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case VaselinaPackage.ARRAY_DIMENSION__INDEX:
-        setIndex((varSymbol)null);
-        return;
-      case VaselinaPackage.ARRAY_DIMENSION__SIZE:
-        setSize(SIZE_EDEFAULT);
+        setIndex((varExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -223,27 +190,8 @@ public class arrayDimensionImpl extends MinimalEObjectImpl.Container implements 
     {
       case VaselinaPackage.ARRAY_DIMENSION__INDEX:
         return index != null;
-      case VaselinaPackage.ARRAY_DIMENSION__SIZE:
-        return size != SIZE_EDEFAULT;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (size: ");
-    result.append(size);
-    result.append(')');
-    return result.toString();
   }
 
 } //arrayDimensionImpl

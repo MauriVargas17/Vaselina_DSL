@@ -109,6 +109,8 @@ public class VaselinaFactoryImpl extends EFactoryImpl implements VaselinaFactory
       case VaselinaPackage.VAR_DECLARED: return createvarDeclared();
       case VaselinaPackage.VAR_ASSIGNMENT: return createvarAssignment();
       case VaselinaPackage.VARIABLE: return createVariable();
+      case VaselinaPackage.ARRAY_REFS: return createarrayRefs();
+      case VaselinaPackage.VAR_REFS: return createvarRefs();
       case VaselinaPackage.VAR_SYMBOL: return createvarSymbol();
       case VaselinaPackage.ARRAY_DIMENSION: return createarrayDimension();
       case VaselinaPackage.FUNC_CALL: return createFuncCall();
@@ -122,8 +124,6 @@ public class VaselinaFactoryImpl extends EFactoryImpl implements VaselinaFactory
       case VaselinaPackage.RETURN_DECLARATION: return createReturnDeclaration();
       case VaselinaPackage.DOUBLE: return createDOUBLE();
       case VaselinaPackage.VAR_EXPRESSION: return createvarExpression();
-      case VaselinaPackage.ARRAY_REFS: return createarrayRefs();
-      case VaselinaPackage.VAR_REFS: return createvarRefs();
       case VaselinaPackage.OR: return createOr();
       case VaselinaPackage.AND: return createAnd();
       case VaselinaPackage.EQUALITY: return createEquality();
@@ -226,6 +226,30 @@ public class VaselinaFactoryImpl extends EFactoryImpl implements VaselinaFactory
   {
     VariableImpl variable = new VariableImpl();
     return variable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public arrayRefs createarrayRefs()
+  {
+    arrayRefsImpl arrayRefs = new arrayRefsImpl();
+    return arrayRefs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public varRefs createvarRefs()
+  {
+    varRefsImpl varRefs = new varRefsImpl();
+    return varRefs;
   }
 
   /**
@@ -382,30 +406,6 @@ public class VaselinaFactoryImpl extends EFactoryImpl implements VaselinaFactory
   {
     varExpressionImpl varExpression = new varExpressionImpl();
     return varExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public arrayRefs createarrayRefs()
-  {
-    arrayRefsImpl arrayRefs = new arrayRefsImpl();
-    return arrayRefs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public varRefs createvarRefs()
-  {
-    varRefsImpl varRefs = new varRefsImpl();
-    return varRefs;
   }
 
   /**

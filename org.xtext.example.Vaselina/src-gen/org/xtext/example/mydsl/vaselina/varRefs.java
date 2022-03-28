@@ -9,6 +9,12 @@ package org.xtext.example.mydsl.vaselina;
  * A representation of the model object '<em><b>var Refs</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mydsl.vaselina.varRefs#getVaRefs <em>Va Refs</em>}</li>
+ * </ul>
  *
  * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getvarRefs()
  * @model
@@ -16,4 +22,26 @@ package org.xtext.example.mydsl.vaselina;
  */
 public interface varRefs extends Variable
 {
+  /**
+   * Returns the value of the '<em><b>Va Refs</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Va Refs</em>' reference.
+   * @see #setVaRefs(varSymbol)
+   * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getvarRefs_VaRefs()
+   * @model
+   * @generated
+   */
+  varSymbol getVaRefs();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.vaselina.varRefs#getVaRefs <em>Va Refs</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Va Refs</em>' reference.
+   * @see #getVaRefs()
+   * @generated
+   */
+  void setVaRefs(varSymbol value);
+
 } // varRefs

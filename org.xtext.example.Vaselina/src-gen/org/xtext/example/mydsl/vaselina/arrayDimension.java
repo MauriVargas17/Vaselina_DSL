@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.vaselina.arrayDimension#getIndex <em>Index</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.vaselina.arrayDimension#getSize <em>Size</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getarrayDimension()
@@ -25,47 +24,25 @@ import org.eclipse.emf.ecore.EObject;
 public interface arrayDimension extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Index</b></em>' reference.
+   * Returns the value of the '<em><b>Index</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Index</em>' reference.
-   * @see #setIndex(varSymbol)
+   * @return the value of the '<em>Index</em>' containment reference.
+   * @see #setIndex(varExpression)
    * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getarrayDimension_Index()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  varSymbol getIndex();
+  varExpression getIndex();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.vaselina.arrayDimension#getIndex <em>Index</em>}' reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.vaselina.arrayDimension#getIndex <em>Index</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Index</em>' reference.
+   * @param value the new value of the '<em>Index</em>' containment reference.
    * @see #getIndex()
    * @generated
    */
-  void setIndex(varSymbol value);
-
-  /**
-   * Returns the value of the '<em><b>Size</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Size</em>' attribute.
-   * @see #setSize(int)
-   * @see org.xtext.example.mydsl.vaselina.VaselinaPackage#getarrayDimension_Size()
-   * @model
-   * @generated
-   */
-  int getSize();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.vaselina.arrayDimension#getSize <em>Size</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Size</em>' attribute.
-   * @see #getSize()
-   * @generated
-   */
-  void setSize(int value);
+  void setIndex(varExpression value);
 
 } // arrayDimension

@@ -3,20 +3,42 @@
  */
 package org.xtext.example.mydsl.vaselina.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.example.mydsl.vaselina.VaselinaPackage;
 import org.xtext.example.mydsl.vaselina.varRefs;
+import org.xtext.example.mydsl.vaselina.varSymbol;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>var Refs</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mydsl.vaselina.impl.varRefsImpl#getVaRefs <em>Va Refs</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class varRefsImpl extends VariableImpl implements varRefs
 {
+  /**
+   * The cached value of the '{@link #getVaRefs() <em>Va Refs</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVaRefs()
+   * @generated
+   * @ordered
+   */
+  protected varSymbol vaRefs;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -36,6 +58,118 @@ public class varRefsImpl extends VariableImpl implements varRefs
   protected EClass eStaticClass()
   {
     return VaselinaPackage.Literals.VAR_REFS;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public varSymbol getVaRefs()
+  {
+    if (vaRefs != null && vaRefs.eIsProxy())
+    {
+      InternalEObject oldVaRefs = (InternalEObject)vaRefs;
+      vaRefs = (varSymbol)eResolveProxy(oldVaRefs);
+      if (vaRefs != oldVaRefs)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, VaselinaPackage.VAR_REFS__VA_REFS, oldVaRefs, vaRefs));
+      }
+    }
+    return vaRefs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public varSymbol basicGetVaRefs()
+  {
+    return vaRefs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setVaRefs(varSymbol newVaRefs)
+  {
+    varSymbol oldVaRefs = vaRefs;
+    vaRefs = newVaRefs;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, VaselinaPackage.VAR_REFS__VA_REFS, oldVaRefs, vaRefs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case VaselinaPackage.VAR_REFS__VA_REFS:
+        if (resolve) return getVaRefs();
+        return basicGetVaRefs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case VaselinaPackage.VAR_REFS__VA_REFS:
+        setVaRefs((varSymbol)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case VaselinaPackage.VAR_REFS__VA_REFS:
+        setVaRefs((varSymbol)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case VaselinaPackage.VAR_REFS__VA_REFS:
+        return vaRefs != null;
+    }
+    return super.eIsSet(featureID);
   }
 
 } //varRefsImpl

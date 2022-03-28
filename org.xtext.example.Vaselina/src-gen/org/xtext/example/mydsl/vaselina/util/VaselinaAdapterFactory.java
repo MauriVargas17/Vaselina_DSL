@@ -147,6 +147,16 @@ public class VaselinaAdapterFactory extends AdapterFactoryImpl
         return createVariableAdapter();
       }
       @Override
+      public Adapter casearrayRefs(arrayRefs object)
+      {
+        return createarrayRefsAdapter();
+      }
+      @Override
+      public Adapter casevarRefs(varRefs object)
+      {
+        return createvarRefsAdapter();
+      }
+      @Override
       public Adapter casevarSymbol(varSymbol object)
       {
         return createvarSymbolAdapter();
@@ -210,16 +220,6 @@ public class VaselinaAdapterFactory extends AdapterFactoryImpl
       public Adapter casevarExpression(varExpression object)
       {
         return createvarExpressionAdapter();
-      }
-      @Override
-      public Adapter casearrayRefs(arrayRefs object)
-      {
-        return createarrayRefsAdapter();
-      }
-      @Override
-      public Adapter casevarRefs(varRefs object)
-      {
-        return createvarRefsAdapter();
       }
       @Override
       public Adapter caseOr(Or object)
@@ -424,6 +424,36 @@ public class VaselinaAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.vaselina.arrayRefs <em>array Refs</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.vaselina.arrayRefs
+   * @generated
+   */
+  public Adapter createarrayRefsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.vaselina.varRefs <em>var Refs</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.vaselina.varRefs
+   * @generated
+   */
+  public Adapter createvarRefsAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.vaselina.varSymbol <em>var Symbol</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -614,36 +644,6 @@ public class VaselinaAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createvarExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.vaselina.arrayRefs <em>array Refs</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.vaselina.arrayRefs
-   * @generated
-   */
-  public Adapter createarrayRefsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.vaselina.varRefs <em>var Refs</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.vaselina.varRefs
-   * @generated
-   */
-  public Adapter createvarRefsAdapter()
   {
     return null;
   }

@@ -30,14 +30,21 @@ varTypeLiteral:
 
 varDeclared:
 	{varDeclared}
-	scope='box' (name=ID | name=ID (dim+=arrayDimension)+) ':' type=varTypeLiteral;
+	(scope='box' name=ID | scope='boxes' name=ID (dim+=arrayDimension)+) ':' type=varTypeLiteral;
 
 varAssignment:
 	variable=Variable 'holds' expr=varExpression;
 	
 Variable:
-	{arrayRefs} varRefs=[varSymbol] (dim+=arrayDimension)+
-	| {varRefs} varRefs=[varSymbol]
+	arrayRefs | varRefs 
+;
+
+arrayRefs:
+	{arrayRefs} arrRefs=[varSymbol] (dims+=arrayDimension)+
+;
+
+varRefs:
+	{varRefs} vaRefs=[varSymbol]
 ;
 	
 varSymbol:
@@ -46,7 +53,7 @@ varSymbol:
 
 arrayDimension:
 	{arrayDimension}
-	'[' (index=[varSymbol] | size=NUM) ']';
+	'[' index=Terminal ']';
 
 FuncCall:
 	{FuncCall}
@@ -68,7 +75,7 @@ AbstractMethodCall:
 	FuncCall | StdFunction;
 	
 StdfunctionList:
-	'printstr' | 'strjoin' | 'strsplit' | 'numtostr' | 'getargs'
+	'display' | 'printstr' | 'strjoin' | 'strsplit' | 'anytostr' | 'getargs' | 'equals' | 'length'
 ;
 
 StdFunction:
@@ -146,4 +153,3 @@ Terminal returns varExpression:
 	| {boolRef} varRef=('true...' | 'false...') |
 	{varRef} varRef=[varSymbol] | {arrayRef} varRef=[varSymbol] (dim+=arrayDimension)+
 ;
-
