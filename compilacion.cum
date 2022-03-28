@@ -1,0 +1,284 @@
+/**
+ * This file was created to showcase 
+ * the capabilities of Vaselina
+ */ 
+
+/* Variables can be declared before declaring functions
+ * or even inside them, but not after them, unless they 
+ * are inside Vaselinator. Declaration must use the word
+ * "box" since we are going to use the variable as a box
+ * to hold values. The type of values must be also included.
+ * The format is as follows:
+ */ 
+
+box variable: numb
+
+/* Functions must be declared before Vaselinator. When
+ * function does not require parameters, we only use air
+ * to braze whatever is inside the function (and don't forget
+ * vaselina). The format is as follows:
+ */ 
+ 
+braze test with air -> 
+and vaselina
+ 
+/* Functions can be made to keep values or not. When keeping
+ * a value, it must be announced by either using the word "keep"
+ * alongside the expression that must be kept, or by using the
+ * statement "type keeping" to let the function know the type
+ * it must expect to keep.
+ * 
+ * Functions that keep a value and uses parameters can be written like so:
+ */
+
+braze addTwoNumbers with numb a, numb b ->
+	keep a+b
+and vaselina
+
+/* Declaring a variable and giving it a value to hold are two separate
+ * stages. After succesfully declaring a variable, we can make it hold
+ * a value of corresponding type. We can only make a variable hold a 
+ * value inside a Function declaration or inside Vaselinator.
+ * The format is as follows:
+ */
+ 
+braze givingValueToVariable with numb x ->
+	variable holds x
+and vaselina
+
+/* An "If" structure can be used in Vaselina with a peculiar syntax. 
+ * It is however not much different to any other "If" structure used
+ * in other GPL. It can only be implemented inside a Function declaration
+ * or inside Vaselinator.
+ * Here goes a demonstration:
+ */
+ 
+braze ifDemonstration with air ->
+	is this true? :3 >= 5*8:
+	
+	yes ->
+		//Do something
+	<- no ->
+		//Do something else
+	<-
+and vaselina
+
+/* The "Loop" structure used in Vaselina is a simple "DoWhile". 
+ * Syntax is also particular in Vaselina, but might make much more
+ * sense than those in other GPL. It can only be implemented inside
+ * a Function declaration or inside Vaselinator.
+ * 
+ * We might want to stop our "Loop" from going into the infinity. To
+ * do so, we can implement an "If" structure and inside it use the word
+ * "break" to stop the "Loop" structure. 
+ * 
+ * Here goes a demonstration:
+ */
+ 
+braze doWhileDemonstration with air ->
+	box d: numb
+	box e: numb
+	as long as :d >= 0: repeat ->
+		//Do something
+		is this true? :e == 0:
+		yes -> 
+			break
+		<-
+		d holds d - 1
+	<-
+and vaselina
+
+/* We can make variables of a certain type 't' hold expressions of
+ * that same type 't'. Therefore, we can make variables hold Function
+ * calls, only when this are keeping a value of type 't'. Talking about 
+ * calling Functions, the syntax is simple and adds the word "using" 
+ * referring to the arguments or 'ingredients' needed to get a certain value.
+ * 
+ * Recalling the concept of "box", we put expressions inside "::" to resemble 
+ * the fact that they are contained inside a box. This naturally applies to
+ * parameters when calling a Function. Calling a Function only works inside a
+ * Function declaration (also includes recursive calls) or inside Vaselinator.
+ * 
+ * The format is as follows:
+ */
+ 
+ braze callingFunction with air ->
+ 	addTwoNumbers using :2,3:
+ and vaselina
+ 
+/* Values given to variables to hold or functions to keep can be 
+ * written as basic values such as 9 or "Hello", but we can also
+ * write whole expressions, such as arithmetic operations or boolean
+ * operations:
+ */
+ 
+braze collatz with numb n ->
+	box k: numb
+	as long as :n>1: repeat ->
+		is this true? :n%2 == 0:
+		yes ->
+			n holds n/2 
+		<- no -> 
+			n holds 3*n+1
+		<-
+		k holds k + 1
+	<-
+	keep k
+and vaselina
+
+/* For recursive functions, the "type keeping"
+ * statement is highly recommended to make it easier 
+ * for the function to know what type it is supposed 
+ * to keep, and also for you to keep track of what
+ * are you making a function keep (it avoids contradicting
+ * on the type kept).
+ * 
+ * If "type keeping" is not used, and you are fine with
+ * it, you must know that the function will take the type
+ * of return of the last "keep" it reads.
+ *  
+ * Recursive functions must also make use of an "If" structure in order to
+ * reach a base case. Any recursive function must be written taking into
+ * account this model:
+ */
+ 
+braze gcd with numb a, numb b ->
+
+	is this true? :b==0:
+	yes ->
+		keep a
+	<- no ->
+		keep gcd using :b, a%b:
+	<-
+	
+/* Adding a wrong statement, modifies keeping type
+ * and creates contradiction:
+ */
+//	is this true? :b==0:
+//	yes ->
+//		keep ""
+//	<- no ->
+//		keep gcd using :b, a%b:
+//	<-
+	type keeping numb  
+and vaselina 
+
+/* We can write down even more interesting Functions using
+ * a recursive structure:
+ */
+ 
+braze factorial with numb x ->
+
+	is this true? :x==1:  
+	yes ->
+		keep 1
+	<- no ->
+		keep x * factorial using :x-1:
+	<- 
+	//type keeping numb 
+and vaselina 
+
+braze fibonacci with numb a -> 
+	
+	is this true? :a<2: 
+	yes ->
+		keep a   
+	<- no -> 
+		keep fibonacci using :a-1: + fibonacci using :a-2:  
+	<-
+	type keeping numb
+and vaselina  
+
+/* Vaselina includes so far a couple of so-called "Standard Functions".
+ * These are meant to do some interesting operations like printing expressions
+ * on the console or converting a 'numb' into a 'strange'. Here are them:
+ */
+ 
+braze stdFunctions with air ->
+//Prints any expression of type numb, strange, bull or dribble
+	display using :23 + 4 >= 9: 
+//Prints expressions of type strange
+	printstr using :"Hey":
+//Converts any expression to a strange expression
+	anytostr using :120/6:
+//Concatenates a strange expression with another strange expression
+	strjoin using :"Hey ", "Vaselina":
+//
+	strsplit using :"No", "Way":
+//Compares two expressions and keeps the value of truth of this comparison
+	equals using :2,"":
+
+and vaselina
+
+/* Arrays are posible in Vaselina and can be declared in the same
+ * spots as regular Variables.
+ * 
+ */
+  
+braze arrays with air -> 
+	box i: numb  
+	boxes bob[i]: dribble
+	boxes shaun[2]: numb 
+	boxes lenny[2][2]: numb
+	boxes phill[3][3]: numb
+	boxes ritchy[2][3][5]: numb       
+	 
+	bob[3] holds 3.3     
+	lenny[i][3] holds 3      
+	lenny[3][0] holds 9   
+	lenny holds phill
+	
+	length using :lenny:
+	//lenny holds ritchy
+	//shaun[3] holds ritchy
+and vaselina 
+
+braze squareDrawer with numb size ->
+	boxes square[size][size]: strange
+	box index: numb
+	as long as:index<size: repeat
+	->
+		box jindex: numb
+		as long as :jindex<size: repeat
+		->
+			square[index][jindex] holds "*"
+			display using :square[index][jindex]:
+			jindex holds jindex + 1
+			
+		<-
+		printstr using :"": 
+		index holds index + 1
+	<-
+	
+and vaselina
+
+/* Vaselinator is the place to test and put in action our
+ * Functions and Variables previously declared. We can also
+ * declare new Variables and even give them values to hold!
+ * "If" and "Loop" structures can be freely written here as well.
+ * Just avoid trying to declare new Functions, there is a place
+ * for that already (above Vaselinator). Only existing
+ * Functions can be called.
+ * 
+ * This is the way Vaselinator is written:
+ */
+
+Vaselinator -> 
+
+
+	variable holds 2  
+ 
+	 
+	
+	
+/* Want to write an explicit by zero division?
+ * Well, we won't let you, check by yourself:
+ */
+ 	box num: numb
+ 	box d: dribble
+	//num holds 0/0
+	//d holds 0/0.0
+	num holds 4
+
+
+<-
